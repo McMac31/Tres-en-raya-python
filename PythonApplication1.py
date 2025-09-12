@@ -1,3 +1,6 @@
+from pickle import TRUE
+import random
+from tkinter import CHAR
 print("Tres en raya")
 jugador = False
 hayGanador = False
@@ -5,6 +8,26 @@ hayGanador = False
 Tablero = [[" ", " ", " "],
            [" ", " ", " "],
            [" ", " ", " "]]
+
+
+def ElBot():
+    while True:
+            PreguntaBot= input("Desea jugar contra el Bot? Y/N ")
+            if PreguntaBot == "Y":
+                print("Jugando con el bot")
+                return True
+            
+            elif PreguntaBot=="N":
+                print("Cambiando a modo dos jugadores... ")
+                return True
+                pass
+            else:
+                print("Ingrese un caracter valido")
+
+
+   
+
+
 
 def TableroBonito():
     print(
@@ -57,6 +80,7 @@ def seleccionarSimbolo(jugador):
         print("El Turno del jugador 2 fue: ")
     return simbolo
 
+ElBot()
 print("Jugador 1 Empieza:")
 TableroBonito()
 
