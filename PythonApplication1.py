@@ -86,6 +86,7 @@ while hayGanador == False:
         hayGanador = True
         ganador = "Primer jugador (X)" if simbolo == "X" else "Segundo jugador (O)"
         print(f"¡Ha ganado el {ganador}!")
+        TableroBonito()
         break
 
     if Empate():
