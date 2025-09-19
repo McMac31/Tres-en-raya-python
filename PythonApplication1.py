@@ -2,6 +2,8 @@ import random
 
 historial = []
 contador_id = 1
+total_victorias = 0
+total_Empates = 0
 
 
 class Partida:
@@ -16,7 +18,7 @@ class Partida:
         print("Tablero Final:")
         for fila in self.TableroFinal:
             print(f"{fila}")
-
+        
 
 def ElBot():
     while True:
@@ -80,8 +82,8 @@ def jugarPartida(contador_id):
     jugador = False
     hayGanador = False
     ganador = "Empate"
-
     BotActivo = ElBot()
+    global total_victorias, total_empates
 
     print("Jugador 1 empieza:")
     TableroBonito(Tablero)
@@ -122,11 +124,15 @@ def jugarPartida(contador_id):
             else:
                 ganador = "Jugador 2 (O)"
             print(f"¡Ha ganado {ganador}!")
+            global total_victorias
+            total_victorias += 1
             break
 
         if Empate(Tablero):
             ganador = "Empate"
             print("¡Empate!")
+            global total_Empates
+            total_Empates+=1
             break
 
         jugador = Turno(jugador)
@@ -134,6 +140,7 @@ def jugarPartida(contador_id):
     return Partida(contador_id, ganador, Tablero)
 
 while True:
+
     partida = jugarPartida(contador_id)
     historial.append(partida)
     contador_id += 1
@@ -144,6 +151,7 @@ while True:
         print("2. Seleccionar Partida Guardada (IDs y ganadores)")
         print("3. Jugar otra vez")
         print("4. Salir")
+        print("5. Numero de Victorias y Empates")
         opcion = input("Elige una opción: ").strip()
 
         match opcion:
@@ -175,5 +183,9 @@ while True:
             case "4":
                 print("SALIENDO")
                 exit()
+            case "5":
+                print(f"Número de victorias: {total_victorias}")
+                print(f"Número de Empates: {total_Empates}")
+               
             case _:
                 print("Opción no válida")
